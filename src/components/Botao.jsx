@@ -1,7 +1,11 @@
 // Botão padrão do Laivy.
-function Botao({ texto }) {
+// Dentro de um formulário, ele envia o formulário.
+// Fora de um formulário, ele executa a função "aoClicar".
+function Botao({ texto, aoClicar }) {
   return (
-    <button type="submit" className="botao">{texto}</button>
+    <button className="botao" onClick={aoClicar}>
+      {texto}
+    </button>
   )
 }
 

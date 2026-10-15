@@ -1,5 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import { useUsuario } from '../hooks/useUsuario.js'
+import Logo from './Logo.jsx'
+
+const PERFIS = { 1: 'Administrador', 2: 'Treinador', 3: 'Atleta' }
 
 // Estrutura comum das telas internas: menu lateral + conteúdo.
 function Layout({ titulo, children }) {
@@ -8,14 +11,14 @@ function Layout({ titulo, children }) {
   return (
     <div className="layout">
       <aside className="sidebar">
-        <h2 className="marca">LAIVY</h2>
+        <Logo />
         <nav>
           <NavLink to="/inicio">Início</NavLink>
           <NavLink to="/exames">Exames</NavLink>
         </nav>
         <div className="sidebar-usuario">
-          <strong>{usuario.nome}</strong>
-          <small>{usuario.perfil}</small>
+          <strong>{usuario.nome_usuario}</strong>
+          <small>{PERFIS[usuario.tipo_usuario]}</small>
         </div>
       </aside>
       <main className="conteudo">

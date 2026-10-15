@@ -19,10 +19,11 @@ body {
 }
 
 h1 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 1px; margin-bottom: 16px; }
+.erro { color: #FF6B6B; margin-bottom: 16px; }
 .subtitulo { color: var(--cinza); margin-bottom: 24px; }
 
 /* ---------- Componentes ---------- */
-.marca { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 2px; }
+.logo { height: 44px; align-self: flex-start; }
 
 .card { background: var(--card-bg); border: 1px solid var(--card-borda); border-radius: 12px; padding: 20px; }
 
@@ -75,3 +76,6 @@ h1 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 1px
 .grade-exames { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
 .card-exame { display: flex; flex-direction: column; gap: 6px; }
 .card-exame p { color: var(--cinza); font-size: 14px; }
+
+.form-exame { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; align-items: end; margin-bottom: 24px; }
+.form-exame .erro { grid-column: 1 / -1; margin: 0; }
