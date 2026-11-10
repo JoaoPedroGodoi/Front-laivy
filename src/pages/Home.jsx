@@ -11,7 +11,13 @@ function Home() {
 
   return (
     <Layout titulo="Início">
+      {usuario.foto && <img className="foto-usuario" src={usuario.foto} alt="Foto do usuário" referrerPolicy="no-referrer" />}
       <p className="subtitulo">Bem-vindo(a), {usuario.nome_usuario}!</p>
+
+      {/* Quem entrou com o Google não tem perfil no backend, então não vê os dados do time */}
+      {usuario.tipo_usuario === 0 && (
+        <p className="erro">Você entrou com o Google. Para ver os dados do time, entre com o login do Laivy.</p>
+      )}
 
       <div className="grade-info">
         <CardInfo titulo="Exames cadastrados" valor={exames.length} />

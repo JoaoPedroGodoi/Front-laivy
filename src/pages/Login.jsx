@@ -4,9 +4,10 @@ import Logo from '../components/Logo.jsx'
 import Campo from '../components/Campo.jsx'
 import Selecao from '../components/Selecao.jsx'
 import Botao from '../components/Botao.jsx'
+import logoGoogle from '../assets/logo-google.svg'
 
 function Login() {
-  const { entrar } = useUsuario()
+  const { entrar, entrarComGoogle } = useUsuario()
   const [usuario, setUsuario] = useState('')
   const [senha, setSenha] = useState('')
   const [perfil, setPerfil] = useState('2')
@@ -18,6 +19,14 @@ function Login() {
       await entrar(usuario, senha, perfil)
     } catch (e) {
       setErro(e.message)
+    }
+  }
+
+  async function fazerLoginGoogle() {
+    try {
+      await entrarComGoogle()
+    } catch (e) {
+      setErro('Não foi possível entrar com o Google.')
     }
   }
 
@@ -41,6 +50,7 @@ function Login() {
         {erro && <p className="erro">{erro}</p>}
 
         <Botao texto="Entrar no Sistema" />
+        <Botao texto="Entrar com Google" tipo="button" aoClicar={fazerLoginGoogle} icone={logoGoogle} />
       </form>
     </div>
   )

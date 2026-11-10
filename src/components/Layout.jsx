@@ -14,6 +14,7 @@ function Layout({ titulo, children }) {
         <Logo />
         <nav>
           <NavLink to="/inicio">Início</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
           <NavLink to="/exames">Exames</NavLink>
         </nav>
         <div className="sidebar-usuario">

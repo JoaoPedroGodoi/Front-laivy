@@ -1,4 +1,3 @@
-/* Cores e fontes copiadas do laivy-theme.css do backend */
 :root {
   --verde: #00C97A;
   --azul: #0A1628;
@@ -24,6 +23,7 @@ h1 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 1px
 
 /* ---------- Componentes ---------- */
 .logo { height: 44px; align-self: flex-start; }
+.foto-usuario { width: 64px; height: 64px; border-radius: 50%; margin-bottom: 12px; }
 
 .card { background: var(--card-bg); border: 1px solid var(--card-borda); border-radius: 12px; padding: 20px; }
 
@@ -32,6 +32,8 @@ h1 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 1px
   border: none; border-radius: 8px; padding: 12px 20px; cursor: pointer;
   font-family: inherit; font-weight: 700; font-size: 15px;
 }
+/* Ícone dentro do botão (ex.: logo do Google), num círculo branco */
+.botao img { width: 22px; height: 22px; padding: 3px; background: #fff; border-radius: 50%; vertical-align: middle; margin-right: 10px; }
 .link-botao { display: inline-block; margin-top: 24px; text-decoration: none; }
 
 .campo { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--cinza); font-weight: 600; }
@@ -79,3 +81,13 @@ h1 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 1px
 
 .form-exame { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; align-items: end; margin-bottom: 24px; }
 .form-exame .erro { grid-column: 1 / -1; margin: 0; }
+
+/* ---------- Dashboards ---------- */
+.grade-secoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; align-items: start; }
+.secao h2 { font-size: 16px; margin-bottom: 12px; }
+.secao-vazia { color: var(--cinza); font-size: 14px; }
+
+.item-lista { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--card-borda); }
+.item-lista strong { display: block; font-size: 14px; font-weight: 600; }
+.item-lista small { color: var(--cinza); font-size: 12px; }
+.etiqueta { flex-shrink: 0; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 8px; background: rgba(0, 201, 122, 0.15); color: var(--verde); }
