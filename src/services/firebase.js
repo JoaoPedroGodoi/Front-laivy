@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { initializeAuth, inMemoryPersistence, browserPopupRedirectResolver, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 
 const firebaseConfig = {
@@ -13,7 +13,11 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
-const auth = getAuth(app)
+
+const auth = initializeAuth(app, {
+  persistence: inMemoryPersistence,
+  popupRedirectResolver: browserPopupRedirectResolver,
+})
 const provedorGoogle = new GoogleAuthProvider()
 
 export async function loginComGoogle() {
