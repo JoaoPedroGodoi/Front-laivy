@@ -19,16 +19,18 @@ export async function requisicao(caminho, metodo, dados) {
     throw new Error('Não foi possível falar com o servidor.')
   }
 
-  // Sessão expirada ou usuário sem permissão
-  if (resposta.status === 401 || resposta.status === 403) {
-    throw new Error('Você não tem permissão para ver isto. Faça login novamente.')
-  }
-
-  // Se o backend respondeu com outro erro, mostra a mensagem que ele mandou.
+  // Se o backend respondeu com erro, mostra a mensagem que ele mandou.
   // O .catch evita quebrar quando a resposta de erro não vem em JSON.
   if (!resposta.ok) {
     const erro = await resposta.json().catch(() => ({}))
-    throw new Error(erro.erro || 'Ocorreu um erro. Tente novamente.')
+    if (erro.erro) {
+      throw new Error(erro.erro)
+    }
+    // Sem mensagem do backend: 401/403 é sessão expirada ou falta de permissão
+    if (resposta.status === 401 || resposta.status === 403) {
+      throw new Error('Você não tem permissão para ver isto. Faça login novamente.')
+    }
+    throw new Error('Ocorreu um erro. Tente novamente.')
   }
 
   // O DELETE não devolve nada, então só os outros métodos leem a resposta
