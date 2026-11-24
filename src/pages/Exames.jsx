@@ -6,13 +6,15 @@ import CardExame from '../components/CardExame.jsx'
 
 function Exames() {
   const { usuario } = useUsuario()
-  const { exames, adicionar, remover } = useExames()
+  const { exames, erro, adicionar, remover } = useExames()
 
   // Atleta (tipo 3) só vê os exames. Admin e treinador podem cadastrar e excluir.
   const podeEditar = usuario.tipo_usuario !== 3
 
   return (
     <Layout titulo="Exames">
+      {erro && <p className="erro">{erro}</p>}
+
       {podeEditar && <FormExame aoSalvar={adicionar} />}
 
       <div className="grade-exames">

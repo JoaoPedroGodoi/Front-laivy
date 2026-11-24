@@ -3,7 +3,7 @@
 // Recebe '2026-11-05' e devolve '05/11/2026'
 export function formatarData(data) {
   // Alguns exames antigos não têm data
-  if (data === null) {
+  if (!data) {
     return 'sem data'
   }
 
@@ -13,6 +13,10 @@ export function formatarData(data) {
 
 // Recebe '2026-11-05T14:30:00' e devolve '05/11/2026 14:30'
 export function formatarDataHora(dataHora) {
+  if (!dataHora) {
+    return 'sem data'
+  }
+
   const data = new Date(dataHora)
   return data.toLocaleDateString('pt-BR') + ' ' + data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
 }

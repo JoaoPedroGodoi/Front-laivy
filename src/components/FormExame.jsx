@@ -17,7 +17,9 @@ function FormExame({ aoSalvar }) {
 
   // Busca os atletas uma vez, para preencher a caixa "Atleta"
   useEffect(() => {
-    listarAtletas().then(setAtletas)
+    listarAtletas()
+      .then(setAtletas)
+      .catch((e) => setErro(e.message))
   }, [])
 
   async function salvar(evento) {

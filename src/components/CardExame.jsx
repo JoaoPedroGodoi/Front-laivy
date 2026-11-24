@@ -9,7 +9,7 @@ function CardExame({ exame, podeExcluir, aoExcluir }) {
 
   return (
     <div className="card card-exame">
-      <strong>{exame.usuario.nome_usuario}</strong>
+      <strong>{exame.usuario?.nome_usuario ?? 'Atleta removido'}</strong>
       <p>Peso: {exame.peso_usuario} kg</p>
       <p>Altura: {exame.altura_usuario} m</p>
       <p>Situação: {situacao}</p>

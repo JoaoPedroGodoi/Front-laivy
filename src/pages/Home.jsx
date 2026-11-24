@@ -6,7 +6,7 @@ import CardInfo from '../components/CardInfo.jsx'
 
 function Home() {
   const { usuario } = useUsuario()
-  const { exames } = useExames()
+  const { exames, erro } = useExames()
   const aptos = exames.filter((exame) => exame.status_usuario === 1).length
 
   return (
@@ -18,6 +18,9 @@ function Home() {
       {usuario.tipo_usuario === 0 && (
         <p className="erro">Você entrou com o Google. Para ver os dados do time, entre com o login do Laivy.</p>
       )}
+
+      {/* Para quem entrou com o Google o aviso acima já explica, então não repete o erro */}
+      {erro && usuario.tipo_usuario !== 0 && <p className="erro">{erro}</p>}
 
       <div className="grade-info">
         <CardInfo titulo="Exames cadastrados" valor={exames.length} />
