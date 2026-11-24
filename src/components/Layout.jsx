@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { useUsuario } from '../hooks/useUsuario.js'
 import Logo from './Logo.jsx'
 
-const PERFIS = { 1: 'Administrador', 2: 'Treinador', 3: 'Atleta' }
+const PERFIS = { 1: 'Administrador', 2: 'Treinador', 3: 'Atleta', 4: 'Preparador Físico' }
 
 // COMPONENTE · menu lateral + conteúdo · usado em toda tela interna
 function Layout({ titulo, children }) {

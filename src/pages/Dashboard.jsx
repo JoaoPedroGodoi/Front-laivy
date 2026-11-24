@@ -17,7 +17,7 @@ function Dashboard() {
     return <DashboardAtleta />
   }
 
-  // tipo 1 e 2 → admin / treinador
+  // tipo 1, 2 e 4 → admin / treinador / preparador
   return <DashboardAdmin />
 }
 

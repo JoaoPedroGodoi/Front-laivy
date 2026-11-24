@@ -52,6 +52,7 @@ function Login() {
           <option value="1">Administrador</option>
           <option value="2">Treinador</option>
           <option value="3">Atleta</option>
+          <option value="4">Preparador Físico</option>
         </Selecao>
 
         {erro && <p className="erro">{erro}</p>}
