@@ -7,6 +7,8 @@ import Secao from '../components/Secao.jsx'
 import ItemLista from '../components/ItemLista.jsx'
 import ProximasAtividades from '../components/ProximasAtividades.jsx'
 
+// PAGE: dashboard do administrador e do treinador.
+// Só o administrador vê as "Últimas ações no sistema" (relatório de alterações).
 function DashboardAdmin() {
   const { usuario } = useUsuario()
   const ehAdministrador = usuario.tipo_usuario === 1

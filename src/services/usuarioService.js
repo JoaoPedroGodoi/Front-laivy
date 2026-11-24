@@ -1,7 +1,15 @@
 import { requisicao } from './api.js'
 
+// SERVICE: chamadas ao backend sobre usuários e login.
+
 export async function login(login_usuario, senha_usuario, tipo_usuario) {
   const dados = await requisicao('/usuarios/login', 'POST', { login_usuario, senha_usuario, tipo_usuario })
+  return dados.usuario
+}
+
+// Envia o token do Google para o backend, que procura o usuário pelo e-mail
+export async function loginGoogle(id_token) {
+  const dados = await requisicao('/usuarios/login-google', 'POST', { id_token })
   return dados.usuario
 }
 

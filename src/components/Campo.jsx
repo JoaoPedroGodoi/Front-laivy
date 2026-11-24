@@ -1,4 +1,5 @@
-// Campo de formulário com rótulo.
+// COMPONENTE: campo de formulário com rótulo.
+// step="any" deixa digitar números com vírgula (ex.: altura 1,80).
 function Campo({ rotulo, tipo, valor, aoMudar, placeholder }) {
   return (
     <label className="campo">

@@ -4,6 +4,7 @@ import { useExames } from '../hooks/useExames.js'
 import Layout from '../components/Layout.jsx'
 import CardInfo from '../components/CardInfo.jsx'
 
+// PAGE: tela inicial. Mostra boas-vindas e um resumo dos exames.
 function Home() {
   const { usuario } = useUsuario()
   const { exames, erro } = useExames()
@@ -14,13 +15,7 @@ function Home() {
       {usuario.foto && <img className="foto-usuario" src={usuario.foto} alt="Foto do usuário" referrerPolicy="no-referrer" />}
       <p className="subtitulo">Bem-vindo(a), {usuario.nome_usuario}!</p>
 
-      {/* Quem entrou com o Google não tem perfil no backend, então não vê os dados do time */}
-      {usuario.tipo_usuario === 0 && (
-        <p className="erro">Você entrou com o Google. Para ver os dados do time, entre com o login do Laivy.</p>
-      )}
-
-      {/* Para quem entrou com o Google o aviso acima já explica, então não repete o erro */}
-      {erro && usuario.tipo_usuario !== 0 && <p className="erro">{erro}</p>}
+      {erro && <p className="erro">{erro}</p>}
 
       <div className="grade-info">
         <CardInfo titulo="Exames cadastrados" valor={exames.length} />

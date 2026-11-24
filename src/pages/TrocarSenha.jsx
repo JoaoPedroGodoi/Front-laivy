@@ -4,6 +4,7 @@ import Logo from '../components/Logo.jsx'
 import Campo from '../components/Campo.jsx'
 import Botao from '../components/Botao.jsx'
 
+// PAGE: troca de senha.
 // No primeiro acesso, o usuário precisa criar a própria senha.
 function TrocarSenha() {
   const { salvarNovaSenha } = useUsuario()

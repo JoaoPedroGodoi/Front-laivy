@@ -6,6 +6,7 @@ import Selecao from '../components/Selecao.jsx'
 import Botao from '../components/Botao.jsx'
 import logoGoogle from '../assets/logo-google.svg'
 
+// PAGE: tela de login. Entra com login e senha do Laivy ou com a conta Google.
 function Login() {
   const { entrar, entrarComGoogle } = useUsuario()
   const [usuario, setUsuario] = useState('')
@@ -26,7 +27,13 @@ function Login() {
     try {
       await entrarComGoogle()
     } catch (e) {
-      setErro('Não foi possível entrar com o Google.')
+      if (e.code) {
+        // Erro do Google/Firebase (ex.: a pessoa fechou o popup)
+        setErro('Não foi possível entrar com o Google.')
+      } else {
+        // Erro do backend (ex.: e-mail não cadastrado no Laivy)
+        setErro(e.message)
+      }
     }
   }
 

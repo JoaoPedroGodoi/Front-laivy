@@ -1,7 +1,9 @@
-// Função única que conversa com o backend. Todos os services passam por aqui,
-// então os erros são tratados em um lugar só e sempre viram uma mensagem legível.
+// SERVICE: a única função que conversa com o backend.
+// Todos os outros services usam esta função, então os erros são tratados em um lugar só.
 export async function requisicao(caminho, metodo, dados) {
   let resposta
+
+  // 1. Envia o pedido para o backend
   try {
     resposta = await fetch('/api' + caminho, {
       method: metodo,
@@ -10,30 +12,30 @@ export async function requisicao(caminho, metodo, dados) {
       body: JSON.stringify(dados),
     })
   } catch {
-    // Sem internet ou servidor fora do ar: o fetch nem chega a ter resposta
-    throw new Error('Sem conexão com o servidor. Verifique sua internet.')
+    // Sem internet ou servidor fora do ar: o pedido nem chegou
+    throw new Error('Sem conexão com o servidor.')
   }
 
-  // Erros 500 ou maiores: o backend está desligado ou deu um problema interno
+  // 2. Erro 500 ou maior: problema no servidor
   if (resposta.status >= 500) {
     throw new Error('Não foi possível falar com o servidor.')
   }
 
-  // Se o backend respondeu com erro, mostra a mensagem que ele mandou.
-  // O .catch evita quebrar quando a resposta de erro não vem em JSON.
+  // 3. Outro erro (senha errada, dado inválido...): mostra a mensagem que o backend mandou
   if (!resposta.ok) {
-    const erro = await resposta.json().catch(() => ({}))
-    if (erro.erro) {
-      throw new Error(erro.erro)
+    let mensagem = 'Ocorreu um erro. Tente novamente.'
+    try {
+      const erro = await resposta.json()
+      if (erro.erro) {
+        mensagem = erro.erro
+      }
+    } catch {
+      // A resposta de erro não veio em JSON: fica a mensagem padrão
     }
-    // Sem mensagem do backend: 401/403 é sessão expirada ou falta de permissão
-    if (resposta.status === 401 || resposta.status === 403) {
-      throw new Error('Você não tem permissão para ver isto. Faça login novamente.')
-    }
-    throw new Error('Ocorreu um erro. Tente novamente.')
+    throw new Error(mensagem)
   }
 
-  // O DELETE não devolve nada, então só os outros métodos leem a resposta
+  // 4. Deu certo: devolve os dados (o DELETE não devolve nada)
   if (metodo !== 'DELETE') {
     return resposta.json()
   }

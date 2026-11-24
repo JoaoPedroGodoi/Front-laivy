@@ -7,9 +7,15 @@ function CardExame({ exame, podeExcluir, aoExcluir }) {
     situacao = 'Apto'
   }
 
+  // Se o atleta foi apagado, o exame chega sem usuário
+  let nomeAtleta = 'Atleta removido'
+  if (exame.usuario) {
+    nomeAtleta = exame.usuario.nome_usuario
+  }
+
   return (
     <div className="card card-exame">
-      <strong>{exame.usuario?.nome_usuario ?? 'Atleta removido'}</strong>
+      <strong>{nomeAtleta}</strong>
       <p>Peso: {exame.peso_usuario} kg</p>
       <p>Altura: {exame.altura_usuario} m</p>
       <p>Situação: {situacao}</p>

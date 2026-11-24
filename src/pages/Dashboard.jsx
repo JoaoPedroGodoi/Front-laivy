@@ -3,7 +3,7 @@ import { useUsuario } from '../hooks/useUsuario.js'
 import DashboardAdmin from './DashboardAdmin.jsx'
 import DashboardAtleta from './DashboardAtleta.jsx'
 
-// Escolhe qual dashboard mostrar de acordo com o perfil de quem entrou.
+// PAGE: // Escolhe qual dashboard mostrar de acordo com o perfil de quem entrou.
 function Dashboard() {
   const { usuario } = useUsuario()
 

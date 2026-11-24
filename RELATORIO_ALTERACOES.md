@@ -30,3 +30,10 @@
 - `CardExame` e `utils/datas.js` não quebram mais com dados faltando (atleta ou data ausentes).
 - Novo `ErroBoundary` em volta do app: um erro de renderização mostra um aviso com o botão "Voltar ao início", em vez de deixar a tela em branco.
 - README com instruções de uso, estrutura, perfis e divisão da apresentação.
+- Com senha errada, o login mostra a mensagem do backend ("Login, senha ou perfil incorretos.").
+
+## Entrega final — login com Google integrado ao backend
+
+- Backend: novo endpoint `POST /usuarios/login-google`, que valida o ID token do Firebase (assinatura, emissor, projeto e e-mail verificado) e faz login do usuário com o mesmo e-mail.
+- Front: depois do popup do Google, envia o token ao backend e entra com o perfil real do usuário (admin, treinador ou atleta).
+- E-mail não cadastrado ou token inválido: mensagem clara na tela de login, sem travar.

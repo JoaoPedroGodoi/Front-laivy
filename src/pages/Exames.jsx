@@ -4,6 +4,7 @@ import Layout from '../components/Layout.jsx'
 import FormExame from '../components/FormExame.jsx'
 import CardExame from '../components/CardExame.jsx'
 
+// PAGE: funcionalidade principal. Lista, cadastra e exclui exames.
 function Exames() {
   const { usuario } = useUsuario()
   const { exames, erro, adicionar, remover } = useExames()

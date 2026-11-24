@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { listarExames, cadastrarExame, excluirExame } from '../services/exameService.js'
 
-// Hook que guarda a lista de exames e permite cadastrar e excluir.
+// HOOK: guarda a lista de exames e permite cadastrar e excluir.
 export function useExames() {
   const [exames, setExames] = useState([])
   const [erro, setErro] = useState('')

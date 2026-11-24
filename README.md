@@ -59,7 +59,13 @@ O relatório de alterações está em [RELATORIO_ALTERACOES.md](RELATORIO_ALTERA
 | 1 | Administrador | Dashboard completo + últimas ações (auditoria); cadastra e exclui exames |
 | 2 | Treinador | Dashboard sem auditoria; cadastra e exclui exames |
 | 3 | Atleta | Dashboard próprio (exames, avaliações, atividades); só consulta exames |
-| 0 | Login Google | Tela inicial com nome e foto; sem perfil no backend |
+
+## Login com o Google
+
+1. O botão **Entrar com Google** abre o popup do Firebase.
+2. O front envia o ID token do Google para `POST /usuarios/login-google`.
+3. O backend valida o token com as chaves públicas do Google e procura o usuário do Laivy com o **mesmo e-mail**.
+4. Se encontrar, cria a mesma sessão do login normal (cookie JWT) e o usuário entra com o seu perfil. Se não, a tela mostra "Este e-mail do Google não está cadastrado no Laivy".
 
 ## Tratamento de erros
 

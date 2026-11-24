@@ -1,17 +1,14 @@
 import { Component } from 'react'
 
-// Se algum componente quebrar ao desenhar a tela, mostra um aviso
-// em vez de deixar a página inteira em branco.
-// (Error Boundary ainda precisa ser componente de classe no React.)
+// COMPONENTE: protege o app inteiro (ele envolve o <App /> no main.jsx).
+// Se alguma tela quebrar, mostra um aviso em vez de deixar a página em branco.
+// Obs.: o React só oferece isso em componente de classe, por isso ele não é uma função.
 class ErroBoundary extends Component {
   state = { quebrou: false }
 
+  // O React chama esta função automaticamente quando uma tela dá erro
   static getDerivedStateFromError() {
     return { quebrou: true }
-  }
-
-  componentDidCatch(erro) {
-    console.error('Erro na tela:', erro)
   }
 
   render() {
@@ -25,6 +22,8 @@ class ErroBoundary extends Component {
         </div>
       )
     }
+
+    // Sem erro: mostra o app normalmente
     return this.props.children
   }
 }

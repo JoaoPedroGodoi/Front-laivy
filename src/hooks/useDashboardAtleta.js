@@ -3,7 +3,7 @@ import { listarExames } from '../services/exameService.js'
 import { listarDesempenhosDoUsuario } from '../services/desempenhoService.js'
 import { listarProximasAtividades } from '../services/atividadeService.js'
 
-// Busca tudo o que o dashboard do atleta mostra.
+// HOOK: busca tudo o que o dashboard do atleta mostra.
 export function useDashboardAtleta(idAtleta) {
   const [exames, setExames] = useState([])
   const [desempenhos, setDesempenhos] = useState([])

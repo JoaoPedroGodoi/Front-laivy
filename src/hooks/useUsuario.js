@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom'
-import { login, trocarSenha } from '../services/usuarioService.js'
+import { login, loginGoogle, trocarSenha } from '../services/usuarioService.js'
 import { loginComGoogle } from '../services/firebase.js'
 
-
+// Usuário logado, guardado na memória e compartilhado por todas as telas.
+// Ao recarregar a página (F5) ele volta vazio e é preciso entrar de novo.
+// tipo_usuario 0 = ninguém logado.
 let usuarioLogado = { nome_usuario: '', tipo_usuario: 0 }
 
-// Hook que faz o login e devolve o usuário logado.
+// HOOK: faz o login (normal ou Google) e devolve o usuário logado.
 export function useUsuario() {
   const navigate = useNavigate()
 
@@ -28,12 +30,10 @@ export function useUsuario() {
   async function entrarComGoogle() {
     const contaGoogle = await loginComGoogle()
 
-    // O backend não conhece contas do Google, então o perfil fica 0 (sem perfil no Laivy)
-    usuarioLogado = {
-      nome_usuario: contaGoogle.displayName,
-      foto: contaGoogle.photoURL,
-      tipo_usuario: 0,
-    }
+    // O backend confere o token e devolve o usuário do Laivy com o mesmo e-mail
+    const idToken = await contaGoogle.getIdToken()
+    usuarioLogado = await loginGoogle(idToken)
+    usuarioLogado.foto = contaGoogle.photoURL
     navigate('/inicio')
   }
 

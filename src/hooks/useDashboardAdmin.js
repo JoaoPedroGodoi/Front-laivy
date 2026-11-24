@@ -5,7 +5,7 @@ import { listarExames } from '../services/exameService.js'
 import { listarProximasAtividades } from '../services/atividadeService.js'
 import { listarUltimasAcoes } from '../services/auditoriaService.js'
 
-// Busca tudo o que o dashboard do administrador mostra.
+// HOOK: busca tudo o que o dashboard do administrador mostra.
 export function useDashboardAdmin(ehAdministrador) {
   const [usuarios, setUsuarios] = useState([])
   const [times, setTimes] = useState([])

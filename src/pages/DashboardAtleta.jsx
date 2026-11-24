@@ -7,6 +7,7 @@ import Secao from '../components/Secao.jsx'
 import ItemLista from '../components/ItemLista.jsx'
 import ProximasAtividades from '../components/ProximasAtividades.jsx'
 
+// PAGE: dashboard do atleta (cliente). Mostra só os dados dele.
 function DashboardAtleta() {
   const { usuario } = useUsuario()
   const { exames, desempenhos, atividades, erro } = useDashboardAtleta(usuario.id_usuario)
