@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { listarExames, cadastrarExame, excluirExame } from '../services/exameService.js'
 
-// HOOK: guarda a lista de exames e permite cadastrar e excluir.
+// HOOK · exames · listar, cadastrar, excluir · erro
 export function useExames() {
   const [exames, setExames] = useState([])
   const [erro, setErro] = useState('')
 
-  // Busca os exames no backend e atualiza a lista
+  // busca no backend → atualiza a lista
   async function carregar() {
     try {
       setExames(await listarExames())
@@ -16,7 +16,7 @@ export function useExames() {
     }
   }
 
-  // Não usa try aqui: o FormExame mostra o erro ao lado do formulário
+  // sem try → erro tratado no FormExame
   async function adicionar(exame) {
     await cadastrarExame(exame)
     await carregar()
@@ -31,7 +31,7 @@ export function useExames() {
     }
   }
 
-  // Busca os exames uma vez, quando a tela abre
+  // useEffect → busca ao abrir a tela
   useEffect(() => {
     carregar()
   }, [])

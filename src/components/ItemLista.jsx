@@ -1,4 +1,4 @@
-// Uma linha de lista: título, detalhe embaixo e uma etiqueta à direita.
+// COMPONENTE · linha de lista · título, detalhe, etiqueta
 function ItemLista({ titulo, detalhe, etiqueta }) {
   return (
     <div className="item-lista">

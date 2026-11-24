@@ -1,5 +1,4 @@
-// Cartão com título. O conteúdo vai entre <Secao> e </Secao>.
-// Se "vazia" for verdadeiro, avisa que ainda não há nada para mostrar.
+// COMPONENTE · card com título · children · vazia → "Nada para mostrar"
 function Secao({ titulo, vazia, children }) {
   return (
     <section className="card secao">

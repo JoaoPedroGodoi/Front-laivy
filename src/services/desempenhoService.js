@@ -1,6 +1,6 @@
 import { requisicao } from './api.js'
 
-// Avaliações de um atleta específico
+// SERVICE · avaliações do atleta
 export function listarDesempenhosDoUsuario(id) {
   return requisicao('/desempenhos/usuario/' + id, 'GET')
 }

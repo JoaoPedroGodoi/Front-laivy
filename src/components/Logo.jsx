@@ -1,6 +1,6 @@
 import logo from '../assets/logo-laivy.svg'
 
-// Logo do Laivy. Usado no Login e no menu lateral.
+// COMPONENTE · logo · login e menu
 function Logo() {
   return <img className="logo" src={logo} alt="LAIVY" />
 }

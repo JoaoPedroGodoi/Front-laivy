@@ -4,12 +4,12 @@ import Layout from '../components/Layout.jsx'
 import FormExame from '../components/FormExame.jsx'
 import CardExame from '../components/CardExame.jsx'
 
-// PAGE: funcionalidade principal. Lista, cadastra e exclui exames.
+// PAGE · funcionalidade principal · exames
 function Exames() {
   const { usuario } = useUsuario()
   const { exames, erro, adicionar, remover } = useExames()
 
-  // Atleta (tipo 3) só vê os exames. Admin e treinador podem cadastrar e excluir.
+  // atleta → só vê · admin/treinador → cadastra e exclui
   const podeEditar = usuario.tipo_usuario !== 3
 
   return (

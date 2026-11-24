@@ -4,7 +4,7 @@ import ItemLista from './ItemLista.jsx'
 
 const TIPOS = { 1: 'Treino', 2: 'Jogo', 3: 'Evento', 4: 'Competição' }
 
-// Lista das próximas atividades. Usada nos dois dashboards.
+// COMPONENTE · próximas atividades · reaproveitado nos 2 dashboards
 function ProximasAtividades({ atividades }) {
   return (
     <Secao titulo="Próximas atividades" vazia={atividades.length === 0}>

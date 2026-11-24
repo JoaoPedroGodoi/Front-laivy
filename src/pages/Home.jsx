@@ -4,7 +4,7 @@ import { useExames } from '../hooks/useExames.js'
 import Layout from '../components/Layout.jsx'
 import CardInfo from '../components/CardInfo.jsx'
 
-// PAGE: tela inicial. Mostra boas-vindas e um resumo dos exames.
+// PAGE · tela inicial · boas-vindas + resumo
 function Home() {
   const { usuario } = useUsuario()
   const { exames, erro } = useExames()

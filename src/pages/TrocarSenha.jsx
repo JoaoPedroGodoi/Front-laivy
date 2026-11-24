@@ -4,15 +4,14 @@ import Logo from '../components/Logo.jsx'
 import Campo from '../components/Campo.jsx'
 import Botao from '../components/Botao.jsx'
 
-// PAGE: troca de senha.
-// No primeiro acesso, o usuário precisa criar a própria senha.
+// PAGE · troca de senha · primeiro acesso
 function TrocarSenha() {
   const { salvarNovaSenha } = useUsuario()
   const [novaSenha, setNovaSenha] = useState('')
   const [erro, setErro] = useState('')
 
   async function salvar(evento) {
-    evento.preventDefault() // impede a página de recarregar
+    evento.preventDefault() // não recarrega a página
     try {
       await salvarNovaSenha(novaSenha)
     } catch (e) {

@@ -1,6 +1,6 @@
 import { requisicao } from './api.js'
 
-// SERVICE: chamadas ao backend sobre exames.
+// SERVICE · exames · GET, POST, DELETE
 
 export function listarExames() {
   return requisicao('/exames', 'GET')

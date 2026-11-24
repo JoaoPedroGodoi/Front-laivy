@@ -7,17 +7,16 @@ import Secao from '../components/Secao.jsx'
 import ItemLista from '../components/ItemLista.jsx'
 import ProximasAtividades from '../components/ProximasAtividades.jsx'
 
-// PAGE: dashboard do administrador e do treinador.
-// Só o administrador vê as "Últimas ações no sistema" (relatório de alterações).
+// PAGE · dashboard admin/treinador · últimas ações = relatório (só admin)
 function DashboardAdmin() {
   const { usuario } = useUsuario()
   const ehAdministrador = usuario.tipo_usuario === 1
   const { usuarios, times, exames, atividades, acoes, erro } = useDashboardAdmin(ehAdministrador)
 
-  // Atletas são os usuários do tipo 3
+  // atletas = tipo 3
   const atletas = usuarios.filter((pessoa) => pessoa.tipo_usuario === 3)
 
-  // Inaptos são os exames com status 0
+  // inaptos = status 0
   const inaptos = exames.filter((exame) => exame.status_usuario === 0)
 
   return (

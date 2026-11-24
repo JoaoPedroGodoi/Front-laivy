@@ -1,13 +1,13 @@
 import Botao from './Botao.jsx'
 
-// Cartão de um exame: nome do atleta, seus dados e o botão de excluir.
+// COMPONENTE · card do exame · atleta, peso, altura, situação, excluir
 function CardExame({ exame, podeExcluir, aoExcluir }) {
   let situacao = 'Inapto'
   if (exame.status_usuario === 1) {
     situacao = 'Apto'
   }
 
-  // Se o atleta foi apagado, o exame chega sem usuário
+  // sem atleta → "Atleta removido" (não quebra)
   let nomeAtleta = 'Atleta removido'
   if (exame.usuario) {
     nomeAtleta = exame.usuario.nome_usuario

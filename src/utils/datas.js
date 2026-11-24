@@ -1,17 +1,17 @@
-// Funções que deixam as datas do backend no formato brasileiro.
+// UTIL · datas no formato brasileiro
 
-// Recebe '2026-11-05' e devolve '05/11/2026'
+// '2026-11-05' → '05/11/2026'
 export function formatarData(data) {
-  // Alguns exames antigos não têm data
+  // sem data → "sem data"
   if (!data) {
     return 'sem data'
   }
 
-  // O 'T00:00' evita que o navegador mostre o dia anterior por causa do fuso horário
+  // 'T00:00' → evita erro de fuso
   return new Date(data + 'T00:00').toLocaleDateString('pt-BR')
 }
 
-// Recebe '2026-11-05T14:30:00' e devolve '05/11/2026 14:30'
+// '2026-11-05T14:30' → '05/11/2026 14:30'
 export function formatarDataHora(dataHora) {
   if (!dataHora) {
     return 'sem data'

@@ -5,7 +5,7 @@ import Exames from './pages/Exames.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import TrocarSenha from './pages/TrocarSenha.jsx'
 
-// Rotas: qual página aparece em cada endereço.
+// ROTAS · endereço → página
 function App() {
   return (
     <Routes>

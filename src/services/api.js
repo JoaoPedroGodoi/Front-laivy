@@ -1,27 +1,26 @@
-// SERVICE: a única função que conversa com o backend.
-// Todos os outros services usam esta função, então os erros são tratados em um lugar só.
+// SERVICE · única porta para o backend · erros num lugar só
 export async function requisicao(caminho, metodo, dados) {
   let resposta
 
-  // 1. Envia o pedido para o backend
+  // 1. envia o pedido
   try {
     resposta = await fetch('/api' + caminho, {
       method: metodo,
-      credentials: 'include', // envia o cookie de login junto
+      credentials: 'include', // cookie de login
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dados),
     })
   } catch {
-    // Sem internet ou servidor fora do ar: o pedido nem chegou
+    // sem conexão
     throw new Error('Sem conexão com o servidor.')
   }
 
-  // 2. Erro 500 ou maior: problema no servidor
+  // 2. erro 500+ → servidor
   if (resposta.status >= 500) {
     throw new Error('Não foi possível falar com o servidor.')
   }
 
-  // 3. Outro erro (senha errada, dado inválido...): mostra a mensagem que o backend mandou
+  // 3. outro erro → mensagem do backend
   if (!resposta.ok) {
     let mensagem = 'Ocorreu um erro. Tente novamente.'
     try {
@@ -30,12 +29,12 @@ export async function requisicao(caminho, metodo, dados) {
         mensagem = erro.erro
       }
     } catch {
-      // A resposta de erro não veio em JSON: fica a mensagem padrão
+      // sem JSON → mensagem padrão
     }
     throw new Error(mensagem)
   }
 
-  // 4. Deu certo: devolve os dados (o DELETE não devolve nada)
+  // 4. sucesso → devolve os dados (DELETE não devolve)
   if (metodo !== 'DELETE') {
     return resposta.json()
   }

@@ -3,7 +3,7 @@ import { listarExames } from '../services/exameService.js'
 import { listarDesempenhosDoUsuario } from '../services/desempenhoService.js'
 import { listarProximasAtividades } from '../services/atividadeService.js'
 
-// HOOK: busca tudo o que o dashboard do atleta mostra.
+// HOOK · dados do dashboard atleta
 export function useDashboardAtleta(idAtleta) {
   const [exames, setExames] = useState([])
   const [desempenhos, setDesempenhos] = useState([])
@@ -12,7 +12,7 @@ export function useDashboardAtleta(idAtleta) {
 
   async function carregar() {
     try {
-      // Para o atleta, o backend já devolve só os exames dele
+      // backend filtra → só exames do atleta
       setExames(await listarExames())
       setDesempenhos(await listarDesempenhosDoUsuario(idAtleta))
       setAtividades(await listarProximasAtividades())
@@ -21,7 +21,7 @@ export function useDashboardAtleta(idAtleta) {
     }
   }
 
-  // Busca os dados uma vez, quando a tela abre
+  // useEffect → busca ao abrir a tela
   useEffect(() => {
     carregar()
   }, [])

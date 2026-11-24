@@ -1,4 +1,4 @@
-// Cartão de número (ex.: "Exames cadastrados: 4").
+// COMPONENTE · card de número · título + valor
 function CardInfo({ titulo, valor }) {
   return (
     <div className="card card-info">

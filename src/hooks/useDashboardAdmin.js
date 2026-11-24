@@ -5,7 +5,7 @@ import { listarExames } from '../services/exameService.js'
 import { listarProximasAtividades } from '../services/atividadeService.js'
 import { listarUltimasAcoes } from '../services/auditoriaService.js'
 
-// HOOK: busca tudo o que o dashboard do administrador mostra.
+// HOOK · dados do dashboard admin
 export function useDashboardAdmin(ehAdministrador) {
   const [usuarios, setUsuarios] = useState([])
   const [times, setTimes] = useState([])
@@ -21,7 +21,7 @@ export function useDashboardAdmin(ehAdministrador) {
       setExames(await listarExames())
       setAtividades(await listarProximasAtividades())
 
-      // O treinador também usa esta tela, mas só o administrador pode ver as ações
+      // auditoria → só administrador
       if (ehAdministrador) {
         setAcoes(await listarUltimasAcoes())
       }
@@ -30,7 +30,7 @@ export function useDashboardAdmin(ehAdministrador) {
     }
   }
 
-  // Busca os dados uma vez, quando a tela abre
+  // useEffect → busca ao abrir a tela
   useEffect(() => {
     carregar()
   }, [])

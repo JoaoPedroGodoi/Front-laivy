@@ -4,7 +4,7 @@ import Logo from './Logo.jsx'
 
 const PERFIS = { 1: 'Administrador', 2: 'Treinador', 3: 'Atleta' }
 
-// Estrutura comum das telas internas: menu lateral + conteúdo.
+// COMPONENTE · menu lateral + conteúdo · usado em toda tela interna
 function Layout({ titulo, children }) {
   const { usuario } = useUsuario()
 

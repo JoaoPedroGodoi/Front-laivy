@@ -3,21 +3,21 @@ import { useUsuario } from '../hooks/useUsuario.js'
 import DashboardAdmin from './DashboardAdmin.jsx'
 import DashboardAtleta from './DashboardAtleta.jsx'
 
-// PAGE: // Escolhe qual dashboard mostrar de acordo com o perfil de quem entrou.
+// PAGE · escolhe o dashboard pelo perfil
 function Dashboard() {
   const { usuario } = useUsuario()
 
-  // Tipo 0 é o usuário vazio: ninguém fez login
+  // tipo 0 → ninguém logado → login
   if (usuario.tipo_usuario === 0) {
     return <Navigate to="/login" />
   }
 
-  // Tipo 3 é atleta
+  // tipo 3 → atleta
   if (usuario.tipo_usuario === 3) {
     return <DashboardAtleta />
   }
 
-  // Tipo 1 (administrador) e tipo 2 (treinador)
+  // tipo 1 e 2 → admin / treinador
   return <DashboardAdmin />
 }
 

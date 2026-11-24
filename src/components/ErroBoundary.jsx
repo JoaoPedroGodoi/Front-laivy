@@ -1,12 +1,10 @@
 import { Component } from 'react'
 
-// COMPONENTE: protege o app inteiro (ele envolve o <App /> no main.jsx).
-// Se alguma tela quebrar, mostra um aviso em vez de deixar a página em branco.
-// Obs.: o React só oferece isso em componente de classe, por isso ele não é uma função.
+// COMPONENTE · proteção contra tela branca · envolve o App · classe (exigência do React)
 class ErroBoundary extends Component {
   state = { quebrou: false }
 
-  // O React chama esta função automaticamente quando uma tela dá erro
+  // erro na tela → quebrou = true
   static getDerivedStateFromError() {
     return { quebrou: true }
   }
@@ -23,7 +21,7 @@ class ErroBoundary extends Component {
       )
     }
 
-    // Sem erro: mostra o app normalmente
+    // sem erro → app normal
     return this.props.children
   }
 }

@@ -4,7 +4,7 @@ import Campo from './Campo.jsx'
 import Selecao from './Selecao.jsx'
 import Botao from './Botao.jsx'
 
-// Formulário para cadastrar um novo exame.
+// COMPONENTE · formulário de exame
 function FormExame({ aoSalvar }) {
   const [atletas, setAtletas] = useState([])
   const [idAtleta, setIdAtleta] = useState('')
@@ -15,7 +15,7 @@ function FormExame({ aoSalvar }) {
   const [situacao, setSituacao] = useState('1')
   const [erro, setErro] = useState('')
 
-  // Busca os atletas uma vez, para preencher a caixa "Atleta"
+  // busca atletas → preenche a seleção
   useEffect(() => {
     listarAtletas()
       .then(setAtletas)
@@ -23,9 +23,9 @@ function FormExame({ aoSalvar }) {
   }, [])
 
   async function salvar(evento) {
-    evento.preventDefault() // impede a página de recarregar
+    evento.preventDefault() // não recarrega a página
 
-    // Monta o exame no formato que o backend espera
+    // monta o exame no formato do backend
     const exame = {
       usuario: { id_usuario: Number(idAtleta) },
       data_inicio_exame: dataInicio,
@@ -37,7 +37,7 @@ function FormExame({ aoSalvar }) {
 
     try {
       await aoSalvar(exame)
-      // Deu certo: limpa o formulário
+      // sucesso → limpa o formulário
       setErro('')
       setIdAtleta('')
       setDataInicio('')
@@ -46,7 +46,7 @@ function FormExame({ aoSalvar }) {
       setAltura('')
       setSituacao('1')
     } catch (e) {
-      // Deu errado: mostra a mensagem do backend e mantém o que foi digitado
+      // erro → mostra mensagem · mantém o digitado
       setErro(e.message)
     }
   }
